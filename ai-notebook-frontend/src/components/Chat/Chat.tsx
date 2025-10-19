@@ -74,12 +74,6 @@ const Chat: React.FC = () => {
     scrollToBottom();
   }, [messages]);
 
-  // 初始化数据
-  useEffect(() => {
-    loadApiConfigs();
-    loadAvailableModels();
-  }, [loadApiConfigs, loadAvailableModels]);
-
   const loadApiConfigs = async () => {
     try {
       const configs = await chatAPI.getApiConfigs();
@@ -100,6 +94,12 @@ const Chat: React.FC = () => {
       console.error('Failed to load models:', error);
     }
   };
+
+  // 初始化数据
+  useEffect(() => {
+    loadApiConfigs();
+    loadAvailableModels();
+  }, [loadApiConfigs, loadAvailableModels]);
 
   const handleSendMessage = async () => {
     if (!inputValue.trim() || !selectedModel) return;
