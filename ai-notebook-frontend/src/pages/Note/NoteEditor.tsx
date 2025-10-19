@@ -74,17 +74,6 @@ const NoteEditor: React.FC = () => {
     fetchData();
   }, [id, isNewNote]);
 
-  // 自动保存
-  useEffect(() => {
-    if (!isNewNote && note.id && (note.title || note.content)) {
-      const timer = setTimeout(() => {
-        handleSave(true);
-      }, 2000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [note.title, note.content, isNewNote, note.id, handleSave]);
-
   const handleSave = async (silent = false) => {
     if (!note.title && !note.content) {
       if (!silent) {
@@ -122,12 +111,23 @@ const NoteEditor: React.FC = () => {
     } catch (error) {
       console.error('Failed to save note:', error);
       if (!silent) {
-        setError('保存失败，请重试');
+        setError('保存失败');
       }
     } finally {
       if (!silent) setSaving(false);
     }
   };
+
+  // 自动保存
+  useEffect(() => {
+    if (!isNewNote && note.id && (note.title || note.content)) {
+      const timer = setTimeout(() => {
+        handleSave(true);
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [note.title, note.content, isNewNote, note.id, handleSave]);
 
   const handleToggleFavorite = async () => {
     if (!note.id) return;
@@ -213,8 +213,6 @@ const NoteEditor: React.FC = () => {
     }
   };
 
-
-
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setMenuAnchorEl(event.currentTarget);
   };
@@ -286,10 +284,6 @@ const NoteEditor: React.FC = () => {
             },
           }}
         />
-
-
-
-
 
         {/* 内容编辑器容器 */}
         <Box sx={{ position: 'relative', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
@@ -396,8 +390,6 @@ const NoteEditor: React.FC = () => {
           删除
         </MenuItem>
       </Menu>
-
-
     </Box>
   );
 };
