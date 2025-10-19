@@ -3,18 +3,10 @@ import {
   Box,
   Drawer,
   AppBar,
-  Toolbar,
   Typography,
-  IconButton,
   useTheme,
   useMediaQuery,
 } from '@mui/material';
-import {
-  Menu as MenuIcon,
-  Search as SearchIcon,
-  Notifications as NotificationsIcon,
-  AccountCircle as AccountCircleIcon,
-} from '@mui/icons-material';
 import Sidebar from '../Sidebar/Sidebar';
 import Header from '../Header/Header';
 import { User } from '../../types';

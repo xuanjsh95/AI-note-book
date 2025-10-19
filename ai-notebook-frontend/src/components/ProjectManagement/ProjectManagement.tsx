@@ -7,7 +7,6 @@ import {
   List,
   ListItem,
   ListItemText,
-  ListItemSecondaryAction,
   IconButton,
   Dialog,
   DialogTitle,
@@ -17,7 +16,6 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  Grid,
   Paper,
   Divider,
   Chip,
@@ -416,23 +414,23 @@ const TaskListItem: React.FC<TaskListItemProps> = ({ task, onEdit, onDelete }) =
     }
   };
   
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'todo': return 'info';
-      case 'in-progress': return 'warning';
-      case 'completed': return 'success';
-      default: return 'default';
-    }
-  };
+  // const getStatusColor = (status: string) => {
+  //   switch (status) {
+  //     case 'todo': return 'info';
+  //     case 'in-progress': return 'warning';
+  //     case 'completed': return 'success';
+  //     default: return 'default';
+  //   }
+  // };
   
-  const getStatusText = (status: string) => {
-    switch (status) {
-      case 'todo': return '待办';
-      case 'in-progress': return '进行中';
-      case 'completed': return '已完成';
-      default: return status;
-    }
-  };
+  // const getStatusText = (status: string) => {
+  //   switch (status) {
+  //     case 'todo': return '待办';
+  //     case 'in-progress': return '进行中';
+  //     case 'completed': return '已完成';
+  //     default: return status;
+  //   }
+  // };
   
   const getPriorityText = (priority: string) => {
     switch (priority) {

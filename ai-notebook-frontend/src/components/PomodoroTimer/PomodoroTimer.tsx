@@ -78,7 +78,7 @@ const PomodoroTimer: React.FC = () => {
     setTimeLeft(totalTime);
   };
 
-  const progress = ((totalTime - timeLeft) / totalTime) * 100;
+  // const progress = ((totalTime - timeLeft) / totalTime) * 100;
 
   return (
     <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column', p: 3 }}>

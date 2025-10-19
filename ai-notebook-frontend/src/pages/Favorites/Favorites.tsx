@@ -10,7 +10,6 @@ import {
   Chip,
   TextField,
   InputAdornment,
-  Button,
   Menu,
   MenuItem,
   Alert,
@@ -21,8 +20,6 @@ import {
   StarBorder as StarBorderIcon,
   MoreVert as MoreVertIcon,
   Search as SearchIcon,
-  FilterList as FilterIcon,
-  Sort as SortIcon,
   Edit as EditIcon,
   Delete as DeleteIcon,
   Archive as ArchiveIcon,
@@ -78,7 +75,7 @@ const Favorites: React.FC = () => {
 
   const handleToggleFavorite = async (noteId: string) => {
     try {
-      const updatedNote = await noteAPI.toggleFavorite(noteId);
+      await noteAPI.toggleFavorite(noteId);
       setNotes(prev => prev.filter(note => note.id !== noteId)); // 从收藏夹中移除
     } catch (error) {
       console.error('Failed to toggle favorite:', error);

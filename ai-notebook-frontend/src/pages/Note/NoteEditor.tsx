@@ -83,7 +83,7 @@ const NoteEditor: React.FC = () => {
 
       return () => clearTimeout(timer);
     }
-  }, [note.title, note.content, isNewNote, note.id]);
+  }, [note.title, note.content, isNewNote, note.id, handleSave]);
 
   const handleSave = async (silent = false) => {
     if (!note.title && !note.content) {

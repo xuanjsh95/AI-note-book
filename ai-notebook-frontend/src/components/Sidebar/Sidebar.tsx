@@ -17,7 +17,6 @@ import {
   Dashboard as DashboardIcon,
   Book as BookIcon,
   Star as StarIcon,
-  Archive as ArchiveIcon,
   Add as AddIcon,
   ExpandLess,
   ExpandMore,

@@ -24,7 +24,6 @@ import {
   Stack,
 } from '@mui/material';
 import {
-  Send as SendIcon,
   Person as PersonIcon,
   SmartToy as BotIcon,
   Settings as SettingsIcon,
@@ -79,7 +78,7 @@ const Chat: React.FC = () => {
   useEffect(() => {
     loadApiConfigs();
     loadAvailableModels();
-  }, []);
+  }, [loadApiConfigs, loadAvailableModels]);
 
   const loadApiConfigs = async () => {
     try {
