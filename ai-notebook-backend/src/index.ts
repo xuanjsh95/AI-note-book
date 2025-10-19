@@ -16,8 +16,29 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // 中间件
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://ai-notebook-frontend.vercel.app',
+  'https://ai-notebook-frontend-git-main.vercel.app',
+  'https://ai-notebook-frontend-xuanjingsheng.vercel.app'
+];
+
+// 如果设置了环境变量，添加到允许列表
+if (process.env.CORS_ORIGIN) {
+  allowedOrigins.push(process.env.CORS_ORIGIN);
+}
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+  origin: (origin, callback) => {
+    // 允许没有origin的请求（如移动应用或Postman）
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 app.use(express.json());
