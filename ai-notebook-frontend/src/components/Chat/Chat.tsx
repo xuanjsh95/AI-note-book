@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   Box,
   Paper,
@@ -74,16 +74,16 @@ const Chat: React.FC = () => {
     scrollToBottom();
   }, [messages]);
 
-  const loadApiConfigs = async () => {
+  const loadApiConfigs = useCallback(async () => {
     try {
       const configs = await chatAPI.getApiConfigs();
       setApiConfigs(configs);
     } catch (error) {
       console.error('Failed to load API configs:', error);
     }
-  };
+  }, []);
 
-  const loadAvailableModels = async () => {
+  const loadAvailableModels = useCallback(async () => {
     try {
       const models = await chatAPI.getAvailableModels();
       setAvailableModels(models);
@@ -93,7 +93,7 @@ const Chat: React.FC = () => {
     } catch (error) {
       console.error('Failed to load models:', error);
     }
-  };
+  }, [selectedModel]);
 
   // 初始化数据
   useEffect(() => {

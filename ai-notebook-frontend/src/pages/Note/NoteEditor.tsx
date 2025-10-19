@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Box,
   TextField,
@@ -74,7 +74,7 @@ const NoteEditor: React.FC = () => {
     fetchData();
   }, [id, isNewNote]);
 
-  const handleSave = async (silent = false) => {
+  const handleSave = useCallback(async (silent = false) => {
     if (!note.title && !note.content) {
       if (!silent) {
         setError('请输入标题或内容');
@@ -116,7 +116,7 @@ const NoteEditor: React.FC = () => {
     } finally {
       if (!silent) setSaving(false);
     }
-  };
+  }, [note, isNewNote, navigate]);
 
   // 自动保存
   useEffect(() => {
