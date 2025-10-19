@@ -77,7 +77,7 @@ const NoteList: React.FC<NoteListProps> = ({
 
   const handleFavorite = () => {
     if (selectedNote) {
-      onNoteFavorite(selectedNote.id, !selectedNote.isFavorite);
+      onNoteFavorite(selectedNote.id, !selectedNote.is_favorite);
     }
     handleMenuClose();
   };
@@ -192,7 +192,7 @@ const NoteList: React.FC<NoteListProps> = ({
                           >
                             {note.title || '无标题'}
                           </Typography>
-                          {note.isFavorite && (
+                          {note.is_favorite && (
                             <StarIcon sx={{ fontSize: 16, color: 'warning.main' }} />
                           )}
                         </Box>
@@ -238,7 +238,7 @@ const NoteList: React.FC<NoteListProps> = ({
                           )}
                           
                           <Typography variant="caption" color="text.secondary">
-                            {formatDate(note.updatedAt)}
+                            {formatDate(note.updated_at)}
                           </Typography>
                         </Box>
                       }
@@ -281,14 +281,14 @@ const NoteList: React.FC<NoteListProps> = ({
         </MenuItem>
         <MenuItem onClick={handleFavorite}>
           <ListItemIcon>
-            {selectedNote?.isFavorite ? (
+            {selectedNote?.is_favorite ? (
               <StarBorderIcon fontSize="small" />
             ) : (
               <StarIcon fontSize="small" />
             )}
           </ListItemIcon>
           <ListItemText>
-            {selectedNote?.isFavorite ? '取消收藏' : '添加收藏'}
+            {selectedNote?.is_favorite ? '取消收藏' : '添加收藏'}
           </ListItemText>
         </MenuItem>
         <Divider />
