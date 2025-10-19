@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "ai-notebook-frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/ai-notebook-frontend/$1"
+    }
+  ],
+  "installCommand": "cd ai-notebook-frontend && npm install",
+  "buildCommand": "cd ai-notebook-frontend && npm run build",
+  "outputDirectory": "ai-notebook-frontend/build"
+}

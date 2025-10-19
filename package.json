@@ -1,0 +1,20 @@
+{
+  "name": "ai-notebook",
+  "version": "1.0.0",
+  "description": "AI-powered notebook application",
+  "scripts": {
+    "build": "cd ai-notebook-frontend && npm ci && npm run build",
+    "start": "cd ai-notebook-backend && npm start",
+    "install": "npm install --prefix ai-notebook-frontend"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "workspaces": [
+    "ai-notebook-frontend",
+    "ai-notebook-backend"
+  ],
+  "devDependencies": {},
+  "dependencies": {}
+}
