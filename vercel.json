@@ -7,9 +7,17 @@
       "config": {
         "distDir": "build"
       }
+    },
+    {
+      "src": "ai-notebook-backend/api/index.ts",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/ai-notebook-backend/api/index.ts"
+    },
     {
       "src": "/(.*)",
       "dest": "/ai-notebook-frontend/$1"
@@ -17,5 +25,8 @@
   ],
   "installCommand": "cd ai-notebook-frontend && npm install",
   "buildCommand": "cd ai-notebook-frontend && npm run build",
-  "outputDirectory": "ai-notebook-frontend/build"
+  "outputDirectory": "ai-notebook-frontend/build",
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
